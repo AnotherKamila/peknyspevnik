@@ -1,4 +1,4 @@
-spevnik2: the second iteration of my awesome html5spevnik
+spevnik2: the second attempt at my awesome html5 songbook
 =========================================================
 
 This thing might one day become a neat, touch-friendly, and human-friendly songbook/sheet music organizer written as an HTML5 offline app.
@@ -21,9 +21,9 @@ Even supposedly core parts (like displaying text/sheet music/guitar tabs) will a
 Why all this
 ------------
 
-The main reason why I am doing this is that I want to (1) try to write a semi-serious web app, (2) learn about all the new html5 awesomeness and (3) get closer to becoming a Javascript guru.
+The main reason why I am doing this is that I want to (1) try to write a semi-serious web app, (2) learn about all the new html5 awesomeness and (3) get closer to becoming the Javascript Jedi I'd like to be.
 
 License
 -------
 
-[Public domain (pleasepirate.org)](http://pleasepirate.org/)
+[MIT](http://opensource.org/licenses/MIT)
