@@ -15,7 +15,7 @@ screens:
     ☐ otherwise: results list
 
 Modules:
-  ☐ routing
+  ✔ routing @done (13-08-09 22:26)
   ☐ templating / DOM manipulation
   ☐ DB+data store
   ☐ song view
