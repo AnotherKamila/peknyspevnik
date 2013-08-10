@@ -1,4 +1,4 @@
-urls   = require 'urls'
-router = require 'router/router'
+urls   = require './urls.coffee'
+router = require './router/router.coffee'
 
 router.route urls

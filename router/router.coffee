@@ -22,11 +22,16 @@ exports.route = (_urls, options={}) ->
         handler = null
         for p in urls
             re = new RegExp p.pattern
-            if re.test address then console.log 'matched pattern:', re; handler = p.handler; break
-        document.body.innerText = 'Not Found'; return unless handler?
-        console.log 'handler:', handler
-        if typeof handler == 'function' then handler address
-        else navigate (address.substring (re.exec address)[0].length), handler
+            if re.test address
+                console.log 'matched pattern:', re
+                handler = p.handler
+                break
+        if handler?
+            console.log 'handler:', handler
+            if typeof handler == 'function' then handler address
+            else navigate (address.substring (re.exec address)[0].length), handler
+        else
+            document.body.innerText = 'Not Found'
 
         console.groupEnd()
 
