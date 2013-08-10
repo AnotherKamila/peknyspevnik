@@ -16,6 +16,7 @@ screens:
 
 Modules:
   ✔ routing @done (13-08-09 22:26)
+  ☐ plugin system
   ☐ templating / DOM manipulation
   ☐ DB+data store
   ☐ song view
