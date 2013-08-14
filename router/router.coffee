@@ -1,20 +1,27 @@
+$ = require '../lib/zepto.js'
+
 patterns = []  # array of regexes that is traversed when searching for a matching route
 
 # handler can be recursive: if object then dispatch, else save the function
 exports.urlpattern = (pattern, handler) ->
     { pattern, handler }
 
+options =
+    add_change_listener: (fn) -> window.addEventListener 'hashchange', -> fn()
+    get_address:         -> window.location.hash.substr 1
+    redirect:            (address) -> window.location.hash = address
+    notrailingslash:     false
+
 # urls: array of urlpatterns
-exports.route = (_urls, options={}) ->
+exports.route = (_urls, _options={}) ->
+    $.extend options, _options
+
     console.groupCollapsed 'routing ready'
     console.log '- urls:', _urls
     console.log '- options:', options
     console.groupEnd()
 
-    options.add_change_listener ?= (fn) -> window.addEventListener 'hashchange', -> fn()
-    options.get_address ?= -> window.location.hash.substr 1
-
-    navigate = (address=options.get_address(),urls=_urls) ->
+    navigate = (address=options.get_address(), urls=_urls) ->
         unless options.notrailingslash
             address += '/' unless address[address.length-1] == '/'
         console.groupCollapsed "navigate to: #{address}"
@@ -36,4 +43,10 @@ exports.route = (_urls, options={}) ->
         console.groupEnd()
 
     options.add_change_listener navigate
-    navigate()  # explicitly check address now
+    navigate()  # explicitly check address on initialization
+
+exports.redirect = (address) ->
+    unless options.notrailingslash
+        address += '/' unless address[address.length-1] == '/'
+    console.log "redirecting to `#{address}'"
+    options.redirect address
