@@ -5,5 +5,5 @@ localstorage = require '../helpers/localstorage.coffee'
 
 exports.get = (query) -> localstorage.get 'song.'+query
 
-exports.find = (query) ->
-	return ["I will be the result of query `#{query}' one day"]
+exports.find = (query) ->  # TODO with the current approach I certainly can do better querying capabilities :D
+    localstorage.get k for k in localstorage.keys 'song' when (new RegExp query).test k
