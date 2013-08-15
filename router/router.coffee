@@ -10,7 +10,6 @@ options =
     add_change_listener: (fn) -> window.addEventListener 'hashchange', -> fn()
     get_address:         -> window.location.hash.substr 1
     redirect:            (address) -> window.location.hash = address
-    notrailingslash:     false
 
 # urls: array of urlpatterns
 exports.route = (_urls, _options={}) ->
@@ -22,8 +21,6 @@ exports.route = (_urls, _options={}) ->
     console.groupEnd()
 
     navigate = (address=options.get_address(), urls=_urls) ->
-        unless options.notrailingslash
-            address += '/' unless address[address.length-1] == '/'
         console.groupCollapsed "navigate to: #{address}"
 
         handler = null
@@ -45,7 +42,5 @@ exports.route = (_urls, _options={}) ->
     navigate()  # explicitly check address on initialization
 
 exports.redirect = (address) ->
-    unless options.notrailingslash
-        address += '/' unless address[address.length-1] == '/'
     console.log "redirecting to `#{address}'"
     options.redirect address
