@@ -1,7 +1,7 @@
 # handles the search bar
-$ = require '../lib/zepto.js'
-{render} = require '../helpers/templating.coffee'
-router   = require '../router/router.coffee'
+$ 	   = require '../lib/zepto.js'
+router = require '../router/router.coffee'
+render = require './render.coffee'
 
 exports.init = ->
 

@@ -1,4 +1,4 @@
 $ = require '../lib/zepto.js'
 
-exports.render = (parent, template, context) ->
+module.exports = (parent, template, context) ->
     $(parent).html template context
