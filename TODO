@@ -10,8 +10,8 @@ screens:
   ☐ /settings: settings screen
   ☐ /{query}:
     query is interpreted either as `<author>[/<title>]` (iff there is an exact match) or `string` (show all matches -- tags before authors before song titles before fulltext matches); also allow `+<fuzzy tag match>` and `*<fuzzy author match>` anywhere
-    ☐ for exactly one result: song view
-    ☐ otherwise: results list
+    ✔ for exactly one result: song view @done (13-08-15 21:06)
+    ✔ otherwise: results list @done (13-08-15 21:06)
 
 Modules:
   ✔ routing @done (13-08-09 22:26)
