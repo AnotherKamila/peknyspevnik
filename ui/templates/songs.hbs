@@ -1,6 +1,6 @@
-{{#if songs_list}}<ul>{{/if}}
+{{#if songs_list}}<ul class="songs-list">{{/if}}
 {{#songs_list}}
-<li>{{./text}}</li>
+<li data-score="{{./score}}">{{./key}}: {{./text}}</li>
 {{/songs_list}}
 {{#if songs_list}}</ul>{{/if}}
 {{^songs_list}}No match for `{{query}}'.{{/songs_list}}
