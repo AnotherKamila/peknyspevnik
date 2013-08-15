@@ -34,7 +34,6 @@ exports.route = (_urls, _options={}) ->
                 handler = p.handler
                 break
         if handler?
-            console.log 'handler:', handler
             if typeof handler == 'function' then handler address
             else navigate (address.substring (re.exec address)[0].length), handler
         else

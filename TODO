@@ -4,8 +4,7 @@ step 0:
   ☐ tests
 
 templating:
-  ☐ use Shadow DOM for components (for encapsulation)
-  ☐ find a way to neatly declare the templates (using HTML imports or javascript?)
+  ✔ handlebars! @done (13-08-15 10:51)
 
 screens:
   ☐ /settings: settings screen
@@ -17,10 +16,10 @@ screens:
 Modules:
   ✔ routing @done (13-08-09 22:26)
   ☐ plugin system
-  ☐ templating / DOM manipulation
+  ✔ templating / DOM manipulation @done (13-08-15 10:51)
   ☐ DB+data store
   ☐ song view
-  ☐ settings store + UI
+  ☐ settings: store + UI
 
 UI:
   ☐ nav bar
