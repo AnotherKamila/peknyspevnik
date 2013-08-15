@@ -5,7 +5,7 @@
 
 # TODO spaces in filenames are not handled correctly!
 
-RECOMPILE_EXTENSIONS="coffee js hbs"
+RECOMPILE_EXTENSIONS="coffee js hbs styl"  # TODO separate css and js
 BROWSERIFY_TRANSFORMS="coffeeify hbsfy"
 
 if [[ $1 == -w ]]; then
@@ -14,14 +14,17 @@ if [[ $1 == -w ]]; then
 fi
 
 ENTRY=main.coffee
+CSS_ENTRY=css/bundle.styl
 DIR=.
 DEST="${1-.}"
 
-BUILD="browserify $(for t in $BROWSERIFY_TRANSFORMS; do echo -n "-t $t "; done) -o $DEST/bundle.js $DIR/$ENTRY"
+BUILD="browserify $(for t in $BROWSERIFY_TRANSFORMS; do echo -n "-t $t "; done) --debug -o $DEST/bundle.js $DIR/$ENTRY"
+BUILD_CSS="stylus --inline -o $DEST $DIR/$CSS_ENTRY"
 
 mkdir -p $DEST
 [[ $DEST != $DIR ]] && cp -r -- $DIR/* "$DEST"
 $BUILD
+$BUILD_CSS
 
 [[ -z $WATCH ]] && exit
 
@@ -32,4 +35,5 @@ inotifywait -mrq -e $EVENTS --format '%e %w%f' "$DIR" | while read e; do
 	[[ "$f" =~ \.(${RECOMPILE_EXTENSIONS// /|})$ ]] || continue
 	echo "$f changed => recompiling"
 	$BUILD
+	$BUILD_CSS
 done
