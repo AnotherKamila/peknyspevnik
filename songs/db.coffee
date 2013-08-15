@@ -22,7 +22,7 @@ exports.find = (query) ->
         key = k.substr 'song.'.length
         score = 0
         score += SCORE_BEGINSWITH for r in regexes_beginswith when r.test key
-        score += SCORE_CONTAINS for r in regexes_contains when r.test key
+        score += SCORE_CONTAINS for r in regexes_contains when r.test key unless score
         if score then matches.push { key, score }
     console.debug matches
 
