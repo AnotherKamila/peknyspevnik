@@ -3,6 +3,11 @@
 # compiles & bundles coffeescript/javascript and copies everything else
 # add -w to watch for changes
 
+# TODO spaces in filenames are not handled correctly!
+
+RECOMPILE_EXTENSIONS="coffee js hbs"
+BROWSERIFY_TRANSFORMS="coffeeify hbsfy"
+
 if [[ $1 == -w ]]; then
 	WATCH=1
 	shift
@@ -12,17 +17,19 @@ ENTRY=main.coffee
 DIR=.
 DEST="${1-.}"
 
+BUILD="browserify $(for t in $BROWSERIFY_TRANSFORMS; do echo -n "-t $t "; done) -o $DEST/bundle.js $DIR/$ENTRY"
+
 mkdir -p $DEST
-[[ $DEST != $DIR ]] && cp -r -- $DIR/* "$DEST"  # TODO this would cause trouble if $DIR contained spaces
-browserify --transform coffeeify --debug -o "$DEST/bundle.js" "$DIR/$ENTRY"
+[[ $DEST != $DIR ]] && cp -r -- $DIR/* "$DEST"
+$BUILD
 
 [[ -z $WATCH ]] && exit
 
 EVENTS=modify,close_write,moved_to,create
-echo "Watching $DIR (destination: $DEST)" >&2
+echo "watching $DIR (destination: $DEST)" >&2
 inotifywait -mrq -e $EVENTS --format '%e %w%f' "$DIR" | while read e; do
 	f="${e#* }"
-	[[ "$f" == *.coffee ]] || continue
+	[[ "$f" =~ \.(${RECOMPILE_EXTENSIONS// /|})$ ]] || continue
 	echo "$f changed => recompiling"
-	browserify --transform coffeeify --debug -o "$DEST/bundle.js" "$DIR/$ENTRY"
+	$BUILD
 done
