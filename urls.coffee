@@ -11,6 +11,6 @@ module.exports = [
                 redirect c_url
             else
                 query = url.replace /\/+$/, ''  # trim '/'
-                render document.body, (require './templates/songs.hbs'),
+                render '#content', (require './ui/templates/songs.hbs'),
                        query: query, songs_list: songs.get query
 ]
