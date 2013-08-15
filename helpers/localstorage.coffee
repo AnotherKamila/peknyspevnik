@@ -4,7 +4,6 @@ exports.unset = (key) -> localStorage.removeItem key
 
 exports.keys = (key_prefix='') ->
     key_prefix += '.' unless key_prefix == ''
-    for _, i in localStorage
-        key = localStorage.key i
-        if key.substring(0, key_prefix.length) == key_prefix
-            key
+    localStorage.key i for _, i in localStorage when localStorage.key(i).substr(0, key_prefix.length) == key_prefix
+
+window._localstorage = module.exports
