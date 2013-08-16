@@ -1,6 +1,5 @@
-{urlpattern, redirect} = require './router/router.coffee'
-songs    = require './songs/songs.coffee'
+{urlpattern} = require './router/router.coffee'
 
 module.exports = [
-    urlpattern '.*', (url) -> songs.render_url url
+    urlpattern '.*',   (require './songs/ui/show.coffee').handler
 ]

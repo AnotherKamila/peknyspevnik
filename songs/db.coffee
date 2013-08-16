@@ -8,9 +8,9 @@ $            = require '../lib/zepto.js'
 SCORE_BEGINSWITH = 5
 SCORE_CONTAINS   = 1
 
-exports.get = (query) -> localstorage.get 'song.' + u2u query
+exports.get = get = (query) -> localstorage.get 'song.' + u2u query
 
-exports.find = (query) ->
+exports.find = find = (query) ->
     query = u2u query
     # query = '.*' if query in ['', '/']
     console.log query
@@ -26,4 +26,12 @@ exports.find = (query) ->
         if score then matches.push { key, score }
     console.debug matches
 
-    $.extend m, exports.get m.key for m in matches.sort (a, b) -> b.score - a.score  # sorts by score in descending order
+    $.extend m, get m.key for m in matches.sort (a, b) -> b.score - a.score  # sorts by score in descending order
+
+exports.get_or_find = (query) ->
+    return (if get query then [get query] else find query)
+
+exports.save = (song) ->
+    key = u2u "#{song.meta.author}/#{song.meta.title}"
+    localstorage.set 'song.'+key, song
+    return key

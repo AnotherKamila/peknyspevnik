@@ -1,7 +1,6 @@
 urls   = require './urls.coffee'
 router = require './router/router.coffee'
-ui     = require './ui/ui.coffee'
 
-ui.init()
+(require './ui.coffee').init()
 
 router.route urls
