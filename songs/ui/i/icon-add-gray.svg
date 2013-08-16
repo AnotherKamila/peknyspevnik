@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="icon-menu-blue.svg">
+   sodipodi:docname="icon-add-blue.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="44.8"
-     inkscape:cx="5.6548801"
-     inkscape:cy="-0.4494377"
+     inkscape:zoom="31.678384"
+     inkscape:cx="5.2112556"
+     inkscape:cy="0.57367139"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -64,20 +64,24 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-319.50498,-317.58146)">
-    <g
-       id="g3941"
-       transform="matrix(0.8762898,0.8762898,-0.8762898,0.8762898,323.49149,-245.31958)">
-      <path
-         inkscape:connector-curvature="0"
-         id="path3922"
-         d="m 322.60179,320.05021 c -0.56628,0.36563 -0.9375,0.99455 -0.9375,1.71875 0,1.13416 0.92835,2.0625 2.0625,2.0625 1.13416,0 2.03125,-0.92834 2.03125,-2.0625 0,-0.7242 -0.37122,-1.35312 -0.9375,-1.71875 l 0,1.59375 -1.09375,0.65625 -1.125,-0.65625 0,-1.59375 z"
-         style="fill:#00aaff;fill-opacity:1;stroke:#00aaff;stroke-width:0.20173314;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-      <path
-         id="rect3932"
-         transform="translate(319.50498,317.58146)"
-         d="m 3.625,6.59375 0,3.1875 c 0,0.13603 0.11397,0.25 0.25,0.25 l 0.65625,0 c 0.13603,0 0.25,-0.11397 0.25,-0.25 l 0,-3.1875 C 4.60144,6.64635 4.41646,6.6875 4.21875,6.6875 4.01108,6.6875 3.81444,6.65155 3.625,6.59375 z M 4.21875,9.1875 c 0.1910807,0 0.34375,0.1526693 0.34375,0.34375 C 4.5625,9.7223307 4.4098307,9.875 4.21875,9.875 4.0276693,9.875 3.875,9.7223307 3.875,9.53125 3.875,9.3401693 4.0276693,9.1875 4.21875,9.1875 z"
-         style="fill:#00aaff;fill-opacity:1;stroke:#00aaff;stroke-width:0.20173313;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-         inkscape:connector-curvature="0" />
-    </g>
+    <rect
+       style="fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.25000000000000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3983"
+       width="7.5"
+       height="2.0982139"
+       x="319.96118"
+       y="320.73853"
+       ry="0.24553572"
+       rx="0.24553572" />
+    <rect
+       rx="0.24553572"
+       ry="0.24553572"
+       y="-324.76028"
+       x="318.03763"
+       height="2.0982139"
+       width="7.5"
+       id="rect3985"
+       style="fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.25000000000000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       transform="matrix(0,1,-1,0,0,0)" />
   </g>
 </svg>

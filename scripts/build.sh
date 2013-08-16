@@ -14,7 +14,7 @@ if [[ $1 == -w ]]; then
 fi
 
 ENTRY=main.coffee
-CSS_ENTRY=css/bundle.styl
+CSS_ENTRY=ui/bundle.styl
 DIR=.
 DEST="${1-.}"
 

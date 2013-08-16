@@ -2,6 +2,8 @@
 $ 	   = require '../../lib/zepto.js'
 router = require '../../router/router.coffee'
 
+window.$ = $
+
 exports.init = ->
 
 	# main nav
@@ -10,8 +12,10 @@ exports.init = ->
 	s = $('#search')
 	s_compute_width = ->
 		n = $('#mainnav-inside')
-		s.width n.width() - parseInt(n.css 'padding-left') - parseInt(n.css 'padding-right') - $('#menu-button-wrapper').width() - 2
-	$(window).on 'resize hashchange', s_compute_width; $(s_compute_width)
+		s.width n.width() - parseInt(n.css 'padding-left') - parseInt(n.css 'padding-right') - $('#menu-button-wrapper').width() - 20
+	$(window).on resize: s_compute_width
+	# window.addEventListener 'hashchange', -> setTimeout s_compute_width, 1
+	$(s_compute_width)
 	s.on search: -> router.redirect s.val()
 
 	# - add button
