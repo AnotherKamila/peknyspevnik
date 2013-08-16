@@ -1,0 +1,55 @@
+#add-song-form
+	padding: 2em 0 0 0
+	fieldset
+		border: none
+		padding: 0
+		margin: 0
+	legend.divide
+		text-align: center
+		color: color_lightgray
+		width: 100%
+		position: relative
+		font-variant: small-caps
+		font-weight: bold
+		margin: 1em 0
+		padding: 0
+		span
+			background: #fff
+			padding: 0 0.6em
+		&:before
+			position: absolute
+			top: 0.68em
+			z-index: -1
+			content: ''
+			display: block
+			width: 100%
+			border-bottom: 1px solid color_lightgray
+	textarea
+		display: block
+		box-sizing: border-box
+		padding: 0.5em 0.7em
+		width: 100%
+		height: 30em
+
+	textarea
+	input[type="text"]
+		border: 1px solid color_lightgray
+		&:focus
+			outline: 0
+			border-color: color_focused
+	input[type="text"]
+		display: inline-block
+		margin: 1em 0
+		box-sizing: border-box
+		padding: 0.3em 0.7em
+		width: 48%
+		font-size: 0.8em
+	#author
+		float: left
+	#title
+		float: right
+
+	input[type="submit"]
+		display: inline-block
+		margin: 1em auto 0 auto
+		text-align: center
