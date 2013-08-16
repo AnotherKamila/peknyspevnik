@@ -4,6 +4,7 @@ u2u      = require '../../helpers/u2u.coffee'
 router   = require '../../router/router.coffee'
 
 exports.handler = (url) ->
+    if db.size() == 0 then render '#content', (require './show-list.hbs'), {db_empty: true}; return
     url = decodeURIComponent url
     c_url = u2u url.replace(/\/+/g, '/').replace /^\/+/, ''  # canonicalize url (+ make it look like our db key :D)
     if c_url != url

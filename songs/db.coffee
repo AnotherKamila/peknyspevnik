@@ -36,3 +36,5 @@ exports.save = (song) ->
     key = u2u "#{song.meta.author}/#{song.meta.title}"
     localstorage.set 'song.'+key, song
     return key
+
+exports.size = -> localstorage.keys().length

@@ -5,5 +5,9 @@
 	{{/songs_list}}
 	</ul>
 {{else}}
-	No match for `{{query}}'.
+	{{#if db_empty}}
+		The song database is empty. <a href="#_add">Add some songs!</a>
+	{{else}}
+		No match for `{{query}}'.
+	{{/if}}
 {{/if}}
