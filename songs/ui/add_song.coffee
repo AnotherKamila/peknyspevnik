@@ -32,7 +32,7 @@ exports.handler = ->
             $('legend.divide span').text 'edit'
         reader.readAsText (e.target.files ? e.dataTransfer.files)[0]
 
-    $('#add-song-form').on 'submit', (e) ->
-        e.preventDefault()
-        song = meta: { author: $('#author').val(), title: $('#title').val() }, data: { text: $('#text').text() }
-        router.redirect db.save song
+    $('#add-song-form').submit (e) ->
+            song = meta: { author: $('#author').val(), title: $('#title').val() }, data: { text: $('#text').val() }
+            router.redirect db.save song
+            e.preventDefault()

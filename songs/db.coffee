@@ -32,6 +32,7 @@ exports.get_or_find = (query) ->
     return (if get query then [get query] else find query)
 
 exports.save = (song) ->
+    console.debug 'saving song:', song
     key = u2u "#{song.meta.author}/#{song.meta.title}"
     localstorage.set 'song.'+key, song
     return key
