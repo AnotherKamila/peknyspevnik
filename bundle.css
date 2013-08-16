@@ -20,6 +20,9 @@ h4 {
   margin-top: 4.7em;
   position: relative;
 }
+#mainnav {
+  transition: opacity 0.4s;
+}
 #mainnav-inside {
   padding: 0.8em 1.6em;
 }
