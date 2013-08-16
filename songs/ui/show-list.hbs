@@ -1,0 +1,9 @@
+{{#if songs_list}}
+	<ul class="songs-list">
+	{{#songs_list}}
+		<li data-score="{{./score}}"><a href="#{{./key}}">{{./meta.author}}: {{./meta.title}}</a></li>
+	{{/songs_list}}
+	</ul>
+{{else}}
+	No match for `{{query}}'.
+{{/if}}
