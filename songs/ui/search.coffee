@@ -23,10 +23,19 @@ exports.init = ->
 	# - add button
 	$('#menu-button').on 'click', -> router.redirect '_add'
 
-	# hide navbar when displaying lyrics and there is no mouse activity
-	hide_timer = null
-	hide_navbar = -> $('#mainnav').css opacity: 0
-	show_navbar = -> $('#mainnav').css opacity: 1; hide_timer = setTimeout hide_navbar, NAVBAR_HIDE_TIMEOUT
-	reset_navbar_hiding = -> clearTimeout hide_timer; show_navbar()
-	$('#wrapper').on 'mousemove click', reset_navbar_hiding
-	$(reset_navbar_hiding)
+	# hide navbar when displaying lyrics and there is no mouse activity (+ workaround: scrolling doesn't count as mouse activity)
+	hide_timer = null; last_mouse_pos = [-1,-1]
+	navbar_hiding_on = ->
+		hide_navbar = -> $('#mainnav').css opacity: 0
+		show_navbar = -> $('#mainnav').css opacity: 1; hide_timer = setTimeout hide_navbar, NAVBAR_HIDE_TIMEOUT
+		reset_navbar_hiding = -> clearTimeout hide_timer; show_navbar()
+		$(reset_navbar_hiding)
+		$('#wrapper').on 'mousemove click', (e) ->
+			if last_mouse_pos[0] != e.screenX or last_mouse_pos[1] != e.screenY then reset_navbar_hiding()
+			last_mouse_pos = [e.screenX, e.screenY]
+	navbar_hiding_off = ->
+		$('#wrapper').off 'mousemove click'
+		$('#mainnav').css opacity: 1
+		clearTimeout hide_timer
+	$(document).on 'DOMNodeInserted', '.song-text', navbar_hiding_on
+	$(document).on 'DOMNodeRemoved', '.song-text', navbar_hiding_off
