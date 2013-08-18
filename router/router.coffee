@@ -42,5 +42,5 @@ exports.route = (_urls, _options={}) ->
     navigate()  # explicitly check address on initialization
 
 exports.redirect = (address) ->
-    console.log "redirecting to `#{address}'"
+    console.log "--> redirecting to: #{address}"
     options.redirect address
