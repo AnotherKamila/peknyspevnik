@@ -87,7 +87,7 @@ h4 {
   -o-columns: 20em;
   -webkit-columns: 20em;
 }
-.song-text.multicolumn .stanza {
+.song-text .stanza {
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
 break-inside
