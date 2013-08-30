@@ -3,8 +3,9 @@
 # - replacing (some) Unicode characters with their ASCII equivalents
 # - replacing whitespace with '_' and other non-URL / ugly characters with '-'
 
-from = 'àáäâçčďèéëêìíïîľĺňñòóöôŕřšťùúüůûýž'
-to   = 'aaaaccdeeeeiiiillnnoooorrstuuuuuyz'
+# TODO things like æ or ß should be encoded with more than 1 letter -- should I support it?
+from = 'àáäâæçčďèéëêěìíïîľĺňñòóöôŕřšßťùúüůûýž'
+to   = 'aaaaeccdeeeeeiiiillnnoooorrsstuuuuuyz'
 
 module.exports = (str) ->
     str = str.toLowerCase().trim()
