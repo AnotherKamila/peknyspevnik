@@ -8,9 +8,10 @@
 	white-space: pre
 	line-height: 2
 
-	columns: 20em
-	.stanza
-		column-break-inside: avoid
+	&.multicolumn
+		columns: 20em
+		.stanza
+			column-break-inside: avoid
 
 	.chord
 		display: inline-block

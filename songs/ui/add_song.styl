@@ -24,19 +24,16 @@
 			display: block
 			width: 100%
 			border-bottom: 1px solid color_lightgray
-	textarea
-		display: block
-		box-sizing: border-box
-		padding: 0.5em 0.7em
-		width: 100%
-		height: 30em
 
+	#text-container
 	textarea
 	input[type="text"]
 		border: 1px solid color_lightgray
 		&:focus
 			outline: 0
 			border-color: color_focused
+	#text-container.focus
+		border-color: color_focused
 	input[type="text"]
 		display: inline-block
 		margin: 1em 0
@@ -47,6 +44,29 @@
 	#author
 		float: left
 	#title
+		float: right
+
+	#text-container
+		padding: 0.5em 0.7em
+		height: 30em
+		clear: both
+		font-size: .8em
+	#preview
+	textarea
+		padding: 0
+		margin: 0
+		display: block
+		box-sizing: border-box
+		width: 50%
+		height: 100%
+		overflow: auto
+	textarea
+		border: 0
+		border-right: 1px solid color_lightgray
+		float: left
+	#preview
+		columns: 2
+		padding: 0 0 0 0.7em
 		float: right
 
 	input[type="submit"]

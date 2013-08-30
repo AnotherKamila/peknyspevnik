@@ -53,7 +53,9 @@ exports.parse_song = parse_song = (content) ->
 
     return { meta, data: {text} }
 
-exports.to_html = (text) ->
+exports.text_to_html = text_to_html = (text) ->
+    # TODO html here is evil... this should be called something other than to_html and produce something different presumably
+    ('<div class="stanza">'+stanza+'</div>' for stanza in text.split '\n\n').join('').replace /<<[\w#+\/]+>>/g, (m) -> "<span class='chord'>#{m.substr 2, m.length-4}</span>"
 
 class Song
 	constructor: (from) ->
@@ -64,9 +66,8 @@ class Song
 		@key = from.key
 
 	save: -> db.save this
+	to_html: => text_to_html @data.text
 
-	to_html: =>
-		@data.text.replace /<<[\w#+\/]+>>/g, (m) -> "<span class='chord'>#{m.substr 2, m.length-4}</span>"
 
 exports.Song = Song
 
