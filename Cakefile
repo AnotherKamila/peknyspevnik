@@ -47,6 +47,8 @@ log = (message, color, explanation) -> console.log "#{color}#{message}#{reset} #
 
 # # Tasks
 
+task 'pre-launch', 'prepares app for going online', -> invoke 'client:build'
+
 # ## Client-related
 
 task 'client:build', 'compiles and concatenates client-side scripts', -> client.build()
