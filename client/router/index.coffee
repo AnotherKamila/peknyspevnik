@@ -1,4 +1,4 @@
-$ = require '../lib/zepto.js'
+$ = require 'zepto'
 
 patterns = []  # array of regexes that is traversed when searching for a matching route
 
