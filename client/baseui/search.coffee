@@ -37,5 +37,5 @@ exports.init = ->
         $('#wrapper').off 'mousemove click'
         $('#mainnav').css opacity: 1
         clearTimeout hide_timer
-    $(document).on 'DOMNodeInserted', '.song-text', navbar_hiding_on
-    $(document).on 'DOMNodeRemoved', '.song-text', navbar_hiding_off
+    $(document).on 'DOMNodeInserted', '#the-song-text', navbar_hiding_on
+    $(document).on 'DOMNodeRemoved', '.#the-song-text', navbar_hiding_off

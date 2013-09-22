@@ -11,6 +11,7 @@ exports.handler = ->
     $('#text').on blur: -> $('#text-container').removeClass 'focus'
     $('#text').on "input", (e) ->
         $('#preview').html songs.text_to_html songs.parse_song($('#text').val()).data.text
+        $('#save-button').removeAttr 'disabled'
 
     $('#song-file').on change: (e) ->
         reader = new FileReader()
