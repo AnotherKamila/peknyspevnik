@@ -1,0 +1,31 @@
+{
+  "name": "spevnik",
+  "version": "0.0.1",
+  "author": {
+    "name": "Kamila Součková",
+    "email": "kamila@vesmir.sk",
+    "url": "http://anotherkamila.github.io"
+  },
+  "description": "a neat songbook/sheet music organizer (HTML5 offline app)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anotherkamila/spevnik2.git"
+  },
+  "dependencies": {
+    "coffee-script": ">=1.6.3",
+    "connect": ">=2.9.0"
+  },
+  "devDependencies": {
+    "browserify": ">=2.32",
+    "coffeeify": ">=0.5",
+    "envfile": ">=1.0",
+    "hbsfy": ">=0.1",
+    "ncp": ">=0.4",
+    "node-watch": ">=0.3",
+    "stylus": ">=0.37",
+    "through": ">=2.3"
+  },
+  "engines": {
+    "node": ">=0.10"
+  }
+}

@@ -1,7 +1,8 @@
-{render} = require '../../helpers/snippets.coffee'
-$        = require '../../lib/zepto.js'
-router   = require '../../router/router.coffee'
-songs    = require '../songs.coffee'
+$        = require 'zepto'
+{render} = require '../helpers'
+router   = require '../router'
+songs    = require '../../common/songs'
+db       = require '../db'
 
 exports.handler = ->
     render '#content', (require './add_song.hbs')
@@ -24,4 +25,4 @@ exports.handler = ->
     $('#add-song-form').submit (e) ->
             e.preventDefault()
             s = new songs.Song meta: { author: $('#author').val(), title: $('#title').val() }, txt: $('#text').val()
-            router.redirect s.save()
+            router.redirect db.save s
