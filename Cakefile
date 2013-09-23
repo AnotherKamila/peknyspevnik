@@ -28,9 +28,32 @@ conf =
     server:
         SRC_DIR: './server'
         MAIN: ['index.coffee']
+        EXTENSIONS: ['.coffee']
 
     common:
         SRC_DIR: './common'
+
+
+# Allow including './something' instead of './something/index.<ext>'
+conf.client.BROWSERIFY_TRANSFORMS.unshift (file) ->
+    through = require 'through'
+    return through (buf) -> @queue buf.replace /require[\s(]+['"](\.[^'"]*)['"]/g, (o,m) -> if /\.[^\/]+$/.test m then o else "require('#{m}/index.coffee')"
+
+# -----------------------------------------------------------------
+
+# # Tasks
+
+task 'pre-launch', 'prepares app for going online', -> invoke 'client:build'
+
+# ## Client-related
+
+task 'client:build', 'compiles and concatenates client-side scripts', -> client.build()
+task 'client:watch', 'watches client and common files for changes and recompiles client as needed', -> client.build true
+
+# ## Server-related
+
+task 'server:start', 'starts the server via foreman', -> server.start()
+task 'server:watch', 'watches server and common files for changes and restarts the server as needed', -> server.watch_restart()
 
 # -----------------------------------------------------------------
 
@@ -44,27 +67,7 @@ reset = '\x1b[0m'
 
 log = (message, color, explanation) -> console.log "#{color}#{message}#{reset} #{explanation ? ''}"
 
-
-# # Tasks
-
-task 'pre-launch', 'prepares app for going online', -> invoke 'client:build'
-
-# ## Client-related
-
-task 'client:build', 'compiles and concatenates client-side scripts', -> client.build()
-task 'client:watch', 'watches client and common files for changes and recompiles client as needed', -> client.build true
-
-# ## Server-related
-
-# task 'server:start', 'starts the server via foreman', server.start()
-# task 'server:watch', 'watches server and common files for changes and restarts the server as needed', -> watch DIR_SERVER, server.start
-
 # -----------------------------------------------------------------
-
-# Allow including './something' instead of './something/index.<ext>'
-conf.client.BROWSERIFY_TRANSFORMS.unshift (file) ->
-    through = require 'through'
-    return through (buf) -> @queue buf.replace /require[\s(]+['"](\.[^'"]*)['"]/g, (o,m) -> if /\.[^\/]+$/.test m then o else "require('#{m}/index.coffee')"
 
 client =
 
@@ -94,4 +97,10 @@ client =
             if watch then rwatch conf.client.SRC_DIR, on_change; rwatch conf.common.SRC_DIR, on_change
 
 server =
-    start: ->
+    start: -> @server_process = spawn 'foreman', ['start'], stdio: 'inherit'
+    stop:  -> @server_process.kill()
+    watch_restart: ->
+        @start()
+        on_change = (fname) =>
+            if (path.extname fname) in conf.server.EXTENSIONS then log '*', red, "#{fname} changed -> restarting server"; @stop(); @start()
+        rwatch conf.server.SRC_DIR, on_change, rwatch conf.common.SRC_DIR, on_change
