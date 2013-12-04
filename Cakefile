@@ -7,7 +7,7 @@ rwatch  = require 'node-watch'
 browserify = require 'browserify'
 stylus     = require 'stylus'
 
-process.env[k] = v for k, v of (require 'envfile').parseFileSync '.env'  # merge .env
+process.env[k] ?= v for k, v of (require 'envfile').parseFileSync '.env'  # merge .env
 
 # # Configuration
 conf =

@@ -5,9 +5,3 @@ vendor(prop, args)
 
 columns(args)
 	vendor(columns, args)
-
-column-break-inside(arg)
-	// TODO this probably doesn't work in FF!
-	-webkit-column-break-inside: arg
-	page-break-inside: arg  // for FF this is the only way to force it
-	break-inside: {arg}-column
