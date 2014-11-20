@@ -3,7 +3,7 @@ spevnik2: the second attempt at my awesome html5 songbook
 
 This thing might one day become a neat, touch-friendly, and human-friendly songbook/sheet music organizer written as an HTML5 offline app.
 
-**Update**: It's alive, and has its own domain! The latest build usually lives at [peknyspevnik.tk](http://www.peknyspevnik.tk) and may bite.
+**Update**: It's alive, and has its own domain! The latest build usually lives at [spevnik.tumbolia.tk](http://spevnik.tumbolia.tk) and may bite.
 
 The Plan
 --------
